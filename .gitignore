@@ -3,7 +3,7 @@ node_modules
 # Hardhat files
 /cache
 /artifacts
-/ibc-token-bridge/node_modules
+
 
 # TypeChain files
 /typechain
