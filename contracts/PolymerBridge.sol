@@ -5,14 +5,11 @@ pragma solidity ^0.8.9;
 import "./base/UniversalChanIbcApp.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract IBCToken is UniversalChanIbcApp, ERC20 {
+contract PolymerBridge is UniversalChanIbcApp, ERC20 {
     constructor(
         address _middleware
-    ) UniversalChanIbcApp(_middleware) ERC20("Ethereum", "ETH") {
-        _mint(
-            msg.sender,
-            1000000000 * 10 ** decimals()
-        );
+    ) UniversalChanIbcApp(_middleware) ERC20("Polymer token", "PMT") {
+        _mint(msg.sender, 1000000 * 10 ** decimals());
     }
 
     /**
@@ -21,13 +18,13 @@ contract IBCToken is UniversalChanIbcApp, ERC20 {
      * @param channelId The ID of the channel to send the packet to.
      * @param amount The amount that user wants to bridge to the destination chain.
      */
-    function crossChainTransfeer(
+    function bridgePMT(
         address destPortAddr,
         bytes32 channelId,
         uint256 amount
     ) external {
-        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
-        bytes memory payload = abi.encode(msg.sender, amount);
+        require(balanceOf(msg.sender) >= amount, "Balance is not enough");
+        bytes memory data = abi.encode(msg.sender, amount);
         uint64 timeoutTimestamp = uint64(
             (block.timestamp + 36000) * 1000000000
         );
@@ -35,7 +32,7 @@ contract IBCToken is UniversalChanIbcApp, ERC20 {
         IbcUniversalPacketSender(mw).sendUniversalPacket(
             channelId,
             IbcUtils.toBytes32(destPortAddr),
-            payload,
+            data,
             timeoutTimestamp
         );
     }
@@ -56,7 +53,6 @@ contract IBCToken is UniversalChanIbcApp, ERC20 {
             packet.appData,
             (address, uint256)
         );
-        
         _mint(account, amount);
         return AckPacket(true, abi.encode(packet.appData));
     }
@@ -75,7 +71,6 @@ contract IBCToken is UniversalChanIbcApp, ERC20 {
         AckPacket calldata ack
     ) external override onlyIbcMw {
         ackPackets.push(UcAckWithChannel(channelId, packet, ack));
-
         (address account, uint256 amount) = abi.decode(
             packet.appData,
             (address, uint256)
