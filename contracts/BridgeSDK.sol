@@ -5,11 +5,11 @@ pragma solidity ^0.8.9;
 import "./base/UniversalChanIbcApp.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract PolymerBridge is UniversalChanIbcApp, ERC20 {
+contract BridgeSDK is UniversalChanIbcApp, ERC20 {
     constructor(
         address _middleware
-    ) UniversalChanIbcApp(_middleware) ERC20("Polymer token", "PMT") {
-        _mint(msg.sender, 1000000 * 10 ** decimals());
+    ) UniversalChanIbcApp(_middleware) ERC20("Mantle", "MNT") {
+        _mint(msg.sender, 10000000000 * 10 ** decimals());
     }
 
     /**
@@ -18,12 +18,12 @@ contract PolymerBridge is UniversalChanIbcApp, ERC20 {
      * @param channelId The ID of the channel to send the packet to.
      * @param amount The amount that user wants to bridge to the destination chain.
      */
-    function bridgePMT(
+    function sendTx(
         address destPortAddr,
         bytes32 channelId,
         uint256 amount
     ) external {
-        require(balanceOf(msg.sender) >= amount, "Balance is not enough");
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
         bytes memory data = abi.encode(msg.sender, amount);
         uint64 timeoutTimestamp = uint64(
             (block.timestamp + 36000) * 1000000000
@@ -78,19 +78,4 @@ contract PolymerBridge is UniversalChanIbcApp, ERC20 {
         _burn(account, amount);
     }
 
-    /**
-     * @dev Packet lifecycle callback that implements packet receipt logic and return and acknowledgement packet.
-     *      MUST be overriden by the inheriting contract.
-     *      NOT SUPPORTED YET
-     *
-     * @param channelId the ID of the channel (locally) the timeout was submitted on.
-     * @param packet the Universal packet encoded by the counterparty and relayed by the relayer
-     */
-    function onTimeoutUniversalPacket(
-        bytes32 channelId,
-        UniversalPacket calldata packet
-    ) external override onlyIbcMw {
-        timeoutPackets.push(UcPacketWithChannel(channelId, packet));
-        // do logic
-    }
 }

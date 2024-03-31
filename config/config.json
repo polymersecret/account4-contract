@@ -1,8 +1,8 @@
 {
   "proofsEnabled": false,
   "deploy": {
-    "optimism": "PolymerBridge",
-    "base": "PolymerBridge"
+    "optimism": "BridgeSDK",
+    "base": "BridgeSDK"
   },
   "isUniversal": true,
   "createChannel": {
@@ -28,12 +28,12 @@
   },
   "sendUniversalPacket": {
     "optimism": {
-      "portAddr": "0xB49a654EcED1CF6FabE4C347faD2089490889fCE",
+      "portAddr": "0x778E7d254B9c609d4542b2109EA86212C6eFe4E9",
       "channelId": "channel-10",
       "timeout": 36000
     },
     "base": {
-      "portAddr": "0xB49a654EcED1CF6FabE4C347faD2089490889fCE",
+      "portAddr": "0x778E7d254B9c609d4542b2109EA86212C6eFe4E9",
       "channelId": "channel-11",
       "timeout": 36000
     }

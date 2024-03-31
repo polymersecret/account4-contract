@@ -8,23 +8,16 @@ const hre = require("hardhat");
 const { getUcHandlerAddress } = require('./private/_vibc-helpers.js');
 
 async function main() {
-  const networkName = hre.network.name;
 
-  // The config should have a deploy object with the network name as the key and contract type as the value
-  const ucHandlerAddr = getUcHandlerAddress(networkName);
-    constructorArgs = [ucHandlerAddr];
-
-  
-  // Deploy the contract
   // NOTE: when adding additional args to the constructor, add them to the array as well
-  const myContract = await hre.ethers.deployContract('PolymerBridge', constructorArgs);
+  const myContract = await hre.ethers.deployContract('BridgeSDK', [getUcHandlerAddress(hre.network.name)]);
 
   await myContract.waitForDeployment();
 
   // NOTE: Do not change the output string, its output is formatted to be used in the deploy-config.js script
   // to update the config.json file
   console.log(
-    `Contract PolymerBridge deployed to ${myContract.target} on network ${networkName}`
+    `Contract BridgeSDK deployed to ${myContract.target} on network ${hre.network.name}`
   );
 }
 
