@@ -1,8 +1,8 @@
 {
   "proofsEnabled": false,
   "deploy": {
-    "optimism": "BridgeSDK",
-    "base": "BridgeSDK"
+    "optimism": "CrossChainBridge",
+    "base": "CrossChainBridge"
   },
   "isUniversal": true,
   "createChannel": {
@@ -28,12 +28,12 @@
   },
   "sendUniversalPacket": {
     "optimism": {
-      "portAddr": "0x778E7d254B9c609d4542b2109EA86212C6eFe4E9",
+      "portAddr": "0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697",
       "channelId": "channel-10",
       "timeout": 36000
     },
     "base": {
-      "portAddr": "0x778E7d254B9c609d4542b2109EA86212C6eFe4E9",
+      "portAddr": "0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697",
       "channelId": "channel-11",
       "timeout": 36000
     }

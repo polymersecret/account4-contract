@@ -5,11 +5,11 @@ pragma solidity ^0.8.9;
 import "./base/UniversalChanIbcApp.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract BridgeSDK is UniversalChanIbcApp, ERC20 {
+contract CrossChainBridge is UniversalChanIbcApp, ERC20 {
     constructor(
         address _middleware
-    ) UniversalChanIbcApp(_middleware) ERC20("Mantle", "MNT") {
-        _mint(msg.sender, 10000000000 * 10 ** decimals());
+    ) UniversalChanIbcApp(_middleware) ERC20("Demo bridge", "DMG") {
+        _mint(msg.sender, 10000 * 10 ** decimals());
     }
 
     /**
@@ -18,7 +18,7 @@ contract BridgeSDK is UniversalChanIbcApp, ERC20 {
      * @param channelId The ID of the channel to send the packet to.
      * @param amount The amount that user wants to bridge to the destination chain.
      */
-    function sendTx(
+    function sendCrossChainTransaction(
         address destPortAddr,
         bytes32 channelId,
         uint256 amount

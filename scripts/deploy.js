@@ -10,14 +10,14 @@ const { getUcHandlerAddress } = require('./private/_vibc-helpers.js');
 async function main() {
 
   // NOTE: when adding additional args to the constructor, add them to the array as well
-  const myContract = await hre.ethers.deployContract('BridgeSDK', [getUcHandlerAddress(hre.network.name)]);
+  const c = await hre.ethers.deployContract('CrossChainBridge', [getUcHandlerAddress(hre.network.name)]);
 
-  await myContract.waitForDeployment();
+  await c.waitForDeployment();
 
   // NOTE: Do not change the output string, its output is formatted to be used in the deploy-config.js script
   // to update the config.json file
   console.log(
-    `Contract BridgeSDK deployed to ${myContract.target} on network ${hre.network.name}`
+    `Contract CrossChainBridge deployed to ${c.target} on network ${hre.network.name}`
   );
 }
 

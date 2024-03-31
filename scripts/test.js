@@ -1,11 +1,11 @@
 const Web3 = require('web3').default;
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const contractInfro = require('../artifacts/contracts/BridgeSDK.sol/BridgeSDK.json');
+const contractInfro = require('../artifacts/contracts/CrossChainBridge.sol/CrossChainBridge.json');
 const configInfro = require('../config/config.json');
 
 async function main() {
   try {
-    const mnemonic = 'harsh pupil danger dilemma frost prefer arrange drop source connect myself jar';
+    const mnemonic = 'help weasel bottom word speak town duck uniform enroll rocket smile top';
     const chain = process.argv[2];
     const amountSmall = process.argv[3];
     let amount = amountSmall * 1000000000000000000
