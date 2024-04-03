@@ -16,9 +16,6 @@ npm i
 npm run serve
 ```
 
-### Mnemonic: 
-    help weasel bottom word speak town duck uniform enroll rocket smile top
-
 ## Tx hash
 Optimism tx hash: 0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8
 Base tx hash: 0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8
