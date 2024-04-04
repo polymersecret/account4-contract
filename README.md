@@ -1,5 +1,16 @@
 
-## Run-book
+
+## Team Members
+
+- @gaoshangniubi123 - Developer
+
+
+## Introduction
+
+We aim to create a dapp that can bridge customized tokens between chians, we will deploy a lock and mint bridge that mints wrapped token representations.
+
+
+## Steps to reproduce
 1. Contract dependens install, compile and deploy
 ```
 just install
@@ -16,15 +27,29 @@ npm i
 npm run serve
 ```
 
-## Tx hash
-Optimism tx hash: 0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8
-Base tx hash: 0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8
+## Proof of testnet interaction
+
+After following the steps above you should have interacted with the testnet. You can check this at the [IBC Explorer](https://explorer.ethdenver.testnet.polymer.zone/).
+
+Here's the data of our application:
+
+- Contract (OP Sepolia) : 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
+- Contract (Base Sepolia): 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
+- Channel (OP Sepolia): 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
+- Channel (Base Sepolia): 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
+
+- Proof of Testnet interaction:
+    - [SendTx](https://optimism-sepolia.blockscout.com/tx/0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8)
+    - [RecvTx](https://base-sepolia.blockscout.com/tx/0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8)
+    - [Ack](https://base-sepolia.blockscout.com/tx/0x9effaf67d7f35cbad354c5ce0f25ade9941615914662d055fee65a88bdba0df8)
+
+## What we learned
+Create an application with polymer
+
+## Future Improvements
+
+Create links between more chains
 
 
-## portAddr
-Op: 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
-Base: 0xac3d517d5ed9f0715eA067aA0b437A0aF5E28697
-
-
-
-
+## License
+Apache 2.0
